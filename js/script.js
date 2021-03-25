@@ -1,46 +1,25 @@
-var Chat = document.getElementById("Chat");
-var input;
-var Answer;
-var value;
-var order = 1;
-var num = 0;
+const chat = document.getElementById("chat");
+let input;
+let value;
 
-function Rest(){
-    
-    order++;
-
-    if ( order == 7 ) {
-        num++;
-        order--;
-        document.querySelector("#Chat div:nth-child(" + num + ")").style.display = "none";
-    }
-}
-
-function Print(){
-
+function Print_message() {
     input = document.getElementById("input");
-    value = input.value.toString().toLowerCase().replace(/\s+/g, '');
+    value = input.value.toLowerCase().replace(/\s+/g, '') ?? "";
 
-    if ( input.value.replace(/ /g, "") != "" ) {
-        Chat.innerHTML += "<div class=\"User-turn turn \"><span>" + input.value + "</span></div>";
-        Rest();
+    if (value) {
+        chat.innerHTML += `<div class="userTurn turn"><span>${input.value}</span></div>`;
+        Auto_scrolling();
 
         input.value = "";
-        Response(value);
-
-        return 0;
-    } else {
-        
-        return 1;
+        Get_answer(value);
     }
-
 }
 
-function Response(n){
+function Get_answer(n) {
+    let answer;
 
     function Value(){
-
-        var array;
+        let array;
 
         if  (
 
@@ -68,7 +47,6 @@ function Response(n){
 
         )
         {
-
             array = [
                 "What is up ?",
                 "How are you ?",
@@ -76,12 +54,8 @@ function Response(n){
                 "How is going ?",
                 "Are you well ?"
             ]
-
         }
-
-
-        else if  (
-
+        else if (
             n === "whatisup?"
             ||
             n === "whatisup"
@@ -101,10 +75,8 @@ function Response(n){
             n === "areyouwell?"
             ||
             n === "areyouwell"
-
         )
         {
-
             array = [
                 "What is up ?",
                 "How are you ?",
@@ -112,17 +84,11 @@ function Response(n){
                 "How is going ?",
                 "Are you well ?"
             ]
-
         }
-
-
         else if (
-
             n === "whattimeisit"
-
         )
         {
-
             let today = new Date();
             let h = today.getHours(); 
             let m = today.getMinutes();
@@ -140,11 +106,8 @@ function Response(n){
                 h + ":" + m,
                 "May be" + h + ":" + m
             ]
-
         }
-
         else if (
-
             n.charAt(0) === 'ا'
             ||
             n.charAt(0) === 'أ'
@@ -202,7 +165,6 @@ function Response(n){
             n.charAt(0) === 'ظ'
             ||
             n.charAt(0) === 'غ'
-    
         )
         {
             array = [
@@ -211,35 +173,35 @@ function Response(n){
                 "This is Arabic ?"
             ]
         }
-
         else
         {
             array = [
                 "I do not understand you",
                 "What ?",
-                "Try again"
+                "???",
+                "Okayyyy"
             ]
         }
 
-        Answer = array[Math.floor(Math.random() * array.length)];
-
+        answer = array[Math.floor(Math.random() * array.length)];
     }
-    //Random answer
 
+    //Random answer
     Value();
-    Print_answer(Answer);
+    Print_answer(answer);
 }
 
-function Print_answer(a){
-    setTimeout(function(){
-        Chat.innerHTML += "<div class=\"Auto-turn turn\"><span>" + a + "</span></div>";
-        Rest();
+function Print_answer(a) {
+    setTimeout(() => {
+        chat.innerHTML += `<div class="autoTurn turn"><span>${a}</span></div>`;
+        Auto_scrolling();
     }, 500)
 }
 
-//other way for key
-document.addEventListener('keydown' , event => {
-    if (event.keyCode == 13){
-        Print();
-    }
+function Auto_scrolling() {
+    chat.scrollTop = chat.scrollHeight;
+}
+
+document.addEventListener('keydown' , e => {
+    e.which == 13 && Print_message();
 })
