@@ -8,8 +8,7 @@
 body {
     padding: 0;
     margin: 0;
-    --color: #333539;
-    background-color: var(--color);
+    background-color: #333539;
     display: grid;
     height: 100vh;
     justify-items: center;
@@ -31,6 +30,7 @@ body {
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+    overflow-x: hidden;
 }
 #chat::-webkit-scrollbar {
     width: 10px;
