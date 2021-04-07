@@ -1,8 +1,8 @@
 const voiceBtn = document.getElementById("voiceIcon");
 const inputEle = document.getElementById("input");
 
-const SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
-const SpeechGrammarList = window.SpeechGrammarList || webkitSpeechGrammarList;
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const SpeechGrammarList = window.SpeechGrammarList || window.webkitSpeechGrammarList;
 
 const grammar = '#JSGF V1.0;'
 const recognition = new SpeechRecognition();
@@ -13,11 +13,12 @@ recognition.lang = 'en-US';
 recognition.interimResults = false;
 
 recognition.onstart = () => {
-    console.log("Hello");
+    console.log("Speech recognition start");
 }
 
 recognition.onresult = (e) => {
-    inputEle.value = e;
+    const current = e.resultIndex;
+    inputEle.value = e.results[current][0].transcript;
 };
 
 recognition.onspeechend = () => {
