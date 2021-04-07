@@ -14,6 +14,7 @@ recognition.interimResults = false;
 
 recognition.onstart = () => {
     console.log("Speech recognition start");
+    voiceBtn.style.transform = "scale(1.3)";
 }
 
 recognition.onresult = (e) => {
