@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #333539;
+    display: grid;
+    height: 100vh;
+    justify-items: center;
+    align-content: center;
+}
+#container{
+    background-color: #414141;
+    border-radius: var(--border-radius);
+    width: 50vw;
+    height: 50vh;
+    position: relative;
+    display: grid;
+    grid-template-rows: 85% 15%;
+    --border-radius: 10px;
+}
+
+#chat{
+    height: 100%;
+    padding: 3% 7%;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+#chat::-webkit-scrollbar {
+    width: 10px;
+}
+#chat::-webkit-scrollbar-track {
+    background: transparent;
+}
+#chat::-webkit-scrollbar-thumb {
+    background: #515151;
+}
+#chat::-webkit-scrollbar-thumb:hover {
+    background: #6A6A6A;
+}
+
+#messegeBar {
+    height: 100%;
+    position: relative;
+    box-shadow: 0px -20px 30px -20px rgba(0, 0, 0, 0.096);
+}
+#messegeBar #input{
+    width: 100%;
+    background-color: #515151;
+    outline: none;
+    height: 100%;
+    border: none;
+    color: #e6e6e6;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    padding: 1rem 3rem 1rem 2rem;
+    font-size: 1rem;
+    position: absolute;
+    bottom: 0;
+}
+#messegeBar #voiceIcon {
+    width: 20px;
+    position: absolute;
+    z-index: 99;
+    cursor: pointer;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#messegeBar #voiceIcon:hover {
+    opacity: 0.9;
+}
+
+.userTurn{
+    display: flex;
+    justify-content: flex-start;
+}
+.autoTurn{
+    display: flex;
+    justify-content: flex-end;
+}
+.userTurn span{
+    background-color: #6A6A6A;
+}
+.autoTurn span{
+    background-color:#43827C;
+}
+.turn span{
+    color: #e6e6e6;
+    padding: .5rem 1rem;
+    border-radius: 100px;
+    font-size: .75rem;
+    margin: .5rem;
+    max-width: 75%;
+    word-break: break-all;
+}

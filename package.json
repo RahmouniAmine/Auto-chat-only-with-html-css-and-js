@@ -1,0 +1,23 @@
+{
+  "name": "autoChat",
+  "version": "1.0.0",
+  "description": "Auto chat web site",
+  "main": "index.js",
+  "scripts": {
+    "server": "live-server --open=public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmineRM/autoChat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AmineRM/autoChat/issues"
+  },
+  "homepage": "https://github.com/AmineRM/autoChat#readme",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}
